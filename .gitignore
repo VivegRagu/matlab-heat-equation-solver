@@ -1,0 +1,218 @@
+# ===========================================
+# MATLAB Specific Files
+# ===========================================
+
+# MATLAB temporary/backup files
+*.m~
+*.asv
+*.autosave
+
+# MATLAB p-files (encrypted/compiled)
+*.p
+
+# MATLAB Mex files (compiled C/C++ extensions)
+*.mex*
+*.mex
+*.mexmaci64
+*.mexw64
+*.mexmaci
+*.mexw32
+*.mexa64
+
+# MATLAB app files
+*.mlappinstall
+*.mltbx
+*.mlpkginstall
+*.mlapp
+
+# MATLAB executable files
+*.exe              # Windows executables
+*.dll              # Windows dynamic libraries
+*.so               # Linux shared objects
+*.dylib            # macOS dynamic libraries
+
+# ===========================================
+# MATLAB Generated Directories
+# ===========================================
+
+# MATLAB cache and temporary directories
+html/
+cache/
+simulations/
+slprj/             # Simulink project cache
+_CodeCache/        # MATLAB Coder cache
+profile_results/   # Profiler results
+
+# MATLAB deployment directories
+deploy/
+target/
+
+# ===========================================
+# Simulink Files
+# ===========================================
+
+# Simulink model files
+*.slx
+*.mdl
+*.slxp
+*.slxc
+*.sldd
+*.sldx
+
+# Simulink generated files
+*.slx.r*
+*.mdl.r*
+*.slxc.r*
+
+# Simulink cache
+slprj/
+
+# ===========================================
+# MATLAB Data Files (Large - typically exclude)
+# ===========================================
+
+# Large data files - add to .gitignore by default
+*.mat
+*.csv
+*.xlsx
+*.xls
+*.txt
+*.dat
+*.bin
+
+# Keep small data files (uncomment and add patterns to keep)
+# !data/sample_data.mat
+# !data/test_input.csv
+
+# ===========================================
+# MATLAB Output/Results Files
+# ===========================================
+
+# Generated figures and plots
+*.fig
+*.png
+*.jpg
+*.jpeg
+*.bmp
+*.tif
+*.tiff
+*.eps
+*.pdf
+*.svg
+
+# Report files
+*.html
+*.pdf
+*.docx
+*.pptx
+
+# ===========================================
+# MATLAB Crash Dumps and Logs
+# ===========================================
+
+# Crash dumps
+matlab_crash_dump*
+core.*
+
+# Log files
+*.log
+diary.txt
+diary
+
+# MATLAB preferences
+matlab.prf
+MATLABDesktop.xml
+MATLABDesktop.xml.*
+
+# ===========================================
+# IDE and Editor Files
+# ===========================================
+
+# MATLAB Editor files
+*.m~
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Other IDEs
+.idea/
+*.sublime-*
+*.swp
+*.swo
+
+# ===========================================
+# Operating System Files
+# ===========================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows
+desktop.ini
+Thumbs.db
+
+# Linux
+*~
+
+# ===========================================
+# Project-Specific Exclusions
+# ===========================================
+
+# Build/Output directories
+build/
+bin/
+dist/
+output/
+results/           # Generated results
+plots/            # Generated plots
+figures/          # Generated figures
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# ===========================================
+# Documentation
+# ===========================================
+
+# Doxygen/LaTeX generated docs
+docs/_build/
+docs/_static/
+docs/_templates/
+*.aux
+*.log
+*.out
+*.toc
+
+# ===========================================
+# Version Control
+# ===========================================
+
+# Git files (if nested repos)
+.git/
+.gitignore
+.gitmodules
+
+# ===========================================
+# Custom Patterns for This Project
+# ===========================================
+
+# Exclude large result files but keep small samples
+results/large_*.mat
+results/*_full.mat
+
+# Keep final presentation results
+# !results/final_presentation/figure1.png
+# !results/final_presentation/figure2.png
+
+# Exclude intermediate calculations
+temp/
+intermediate/
