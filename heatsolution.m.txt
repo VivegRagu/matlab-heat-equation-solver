@@ -1,0 +1,27 @@
+function [U] = heatsolution(f, M, N, c, L, T)
+    dx = L / (M - 1);
+    dt = T / (N - 1);
+    r = c * dt / dx^2;
+
+    if r > 0.5
+        warning('Stability condition not met: r = %.2f > 0.5', r);
+    end
+
+    U = zeros(M, N);  % initialize solution matrix
+
+    % Set initial condition u(x, 0) = f(x)
+    for m = 1:M
+        x = (m - 1) * dx;
+        U(m, 1) = f(x);
+    end
+
+    % Time stepping
+    for n = 1:N-1
+        for m = 2:M-1
+            U(m, n+1) = U(m, n) + r * (U(m+1, n) - 2*U(m, n) + U(m-1, n));
+        end
+        % Boundary conditions
+        U(1, n+1) = 0;
+        U(M, n+1) = 0;
+    end
+end

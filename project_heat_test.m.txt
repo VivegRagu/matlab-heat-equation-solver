@@ -1,0 +1,45 @@
+function project_heat_test()
+    f = @(x)sin(x)-0.343*sin(3*x);
+    M = 20;
+    N = 200;
+    c = 1;
+    L = pi;
+    T = 1;
+    %
+    cutoff = 0.007;
+    %
+    uref = @(x,t)sin(x)*exp(-t)-0.343*sin(3*x)*exp(-9*t);
+    Uref = zeros(M,N);
+    for m=1:M
+        Uref(m,:)=uref((m-1)*L/(M-1),linspace(0,T,N));
+    end
+    Ureftrunc = Uref;
+    Ureftrunc(Ureftrunc.^2<cutoff^2)=cutoff;
+    %
+    try
+        U = heatsolution(f, M, N, c, L, T);
+    catch e
+        display('Error encountered while calling the function "heatsolution":');
+        display(e.message);
+        return;
+    end
+    %
+    if ~isequal(size(U),size(Uref))
+        display('The output value U is not an M-by-N matrix.');
+        return;
+    end
+    %
+    Utrunc = U;
+    Utrunc(Utrunc.^2<cutoff^2)=cutoff;
+    diff = Utrunc-Ureftrunc;
+    error = sqrt(sum(sum((diff./Ureftrunc).^2))/(M*N));
+    %
+    display("The average deviation of your solution to the reference solution is ~"+sprintf('%0.1f',(error*100))+"%.");
+    %
+    subplot(1,2,1);
+    surf(U);
+    title('Your solution');
+    subplot(1,2,2);
+    surf(Uref);
+    title('Reference solution');
+end

@@ -1,0 +1,26 @@
+scenarios = {
+    struct('f', @(x) sin(x), 'M', 30, 'N', 1000, 'c', 1, 'L', pi, 'T', 0.1),
+    struct('f', @(x) x.*(x - 0.7).*(x - 1).^2, 'M', 30, 'N', 10000, 'c', 1, 'L', pi, 'T', 0.42),
+    struct('f', @(x) x.*(x - 0.7).*(x - 1).^2, 'M', 20, 'N', 10000, 'c', 1, 'L', pi, 'T', 7)
+};
+
+for i = 1:length(scenarios)
+    s = scenarios{i};
+    U = heatsolution(s.f, s.M, s.N, s.c, s.L, s.T);
+    
+    x = linspace(0, s.L, s.M);
+    t = linspace(0, s.T, s.N);
+    [X, Tgrid] = meshgrid(x, t);
+
+    figure;
+    surf(X', Tgrid', U, 'EdgeColor', 'none');
+    xlabel('x'); ylabel('t'); zlabel('u(x,t)');
+    title(sprintf('3D Heat Distribution, Scenario %d', i));
+    view(45,30);
+
+    figure;
+    plot(x, U(:,1), 'r', x, U(:,round(s.N/2)), 'g', x, U(:,end), 'b');
+    legend('t=0', sprintf('t=%.2f', s.T/2), sprintf('t=%.2f', s.T));
+    title(sprintf('2D Temperature Slices, Scenario %d', i));
+    xlabel('x'); ylabel('u(x,t)');
+end
